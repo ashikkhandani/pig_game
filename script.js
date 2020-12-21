@@ -1,6 +1,6 @@
 'use strict';
 
-let rotateMsg= alert('Please rotate your screen to play the Game.');
+let rotateMsg= alert('Please rotate your mobile device to play the Game.');
 
 
 // Selecting Elements
