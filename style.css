@@ -145,6 +145,9 @@ main {
   top: 46.1rem;
 }
 
+.btn--target {
+  top: 48rem;
+}
 .btn:active {
   transform: translate(-50%, 3px);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
@@ -238,20 +241,24 @@ main {
     margin-top: 5rem;
   }
   .btn--new {
-    top: 15rem;
+    top: 14.5rem;
     font-size: 1.2rem;
     height: 5rem;
   }
   .dice {
-    top: 22rem;
+    top: 21rem;
     height: 7rem;
   }
   .btn--roll {
-    top: 32rem;
+    top: 30rem;
     font-size: 1.2rem;
   }
   .btn--hold {
-    top: 40rem;
+    top: 36rem;
+  }
+  .btn--target {
+    top: 42rem;
+    font-size: 1.2rem;
   }
 
   .current {
