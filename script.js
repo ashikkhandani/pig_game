@@ -156,6 +156,7 @@ window.onload = () => {
         playing = false;
 
         showModal();
+        victorySound.play();
         holdSound.volume = 0;
 
         // victorySound.play();
