@@ -21,15 +21,58 @@ const overlay = document.querySelector(".overlay");
 
 let scores, currentScore, activePlayer, playing;
 
+// create dice Roll Sound
+let diceSound = document.createElement("audio");
+diceSound.src = "./sounds/dice.mp3";
+diceSound.setAttribute("controls", "none");
+diceSound.setAttribute("preload", "auto");
+diceSound.style.display = "none";
+diceSound.volume = 0.5;
+container.append(diceSound);
+
+// create hold Sound
+let holdSound = document.createElement("audio");
+holdSound.src = "./sounds/hold.mp3";
+holdSound.setAttribute("controls", "none");
+holdSound.setAttribute("preload", "auto");
+holdSound.style.display = "none";
+holdSound.volume = 0.3;
+container.append(holdSound);
+
+// create game sound
+let gameSound = document.createElement("audio");
+gameSound.src = "./sounds/gamefull.mp3";
+gameSound.setAttribute("controls", "none");
+gameSound.setAttribute("preload", "auto");
+gameSound.style.display = "none";
+gameSound.volume = 0.2;
+gameSound.loop = true;
+container.append(gameSound);
+gameSound.play();
+
+// create victory sound
+let victorySound = document.createElement("audio");
+victorySound.src = "./sounds/victory.mp3";
+victorySound.setAttribute("controls", "none");
+victorySound.setAttribute("preload", "auto");
+victorySound.style.display = "none";
+victorySound.volume = 0.5;
+victorySound.loop = true;
+container.append(victorySound);
+
 // Modal functionality
 const showModal = function () {
   modal.classList.remove("hidden1");
   overlay.classList.remove("hidden1");
+  victorySound.play();
+  victorySound.volume = 0.5;
 };
 
 const closeModal = function () {
   modal.classList.add("hidden1");
   overlay.classList.add("hidden1");
+  victorySound.volume = 0;
+  gameSound.volume = 0.2;
 };
 
 // Starting Condition
@@ -49,6 +92,7 @@ const init = function () {
   player1El.classList.remove("player--winner");
   player0El.classList.add("player--active");
   player1El.classList.remove("player--active");
+  gameSound.volume = 0.2;
 };
 init();
 
@@ -63,6 +107,12 @@ const switchPlayer = function () {
 // Rolling Dice functionality
 btnRoll.addEventListener("click", function () {
   if (playing) {
+    // game sound play
+    gameSound.play();
+
+    // dice sound play
+    diceSound.play();
+
     //1. Generating a random dice roll
     const dice = Math.trunc(Math.random() * 6) + 1;
     console.log(dice);
@@ -79,6 +129,8 @@ btnRoll.addEventListener("click", function () {
         `current--${activePlayer}`
       ).textContent = currentScore;
     } else {
+      holdSound.volume = 0.3;
+
       // switch to next player
       switchPlayer();
     }
@@ -88,6 +140,8 @@ btnRoll.addEventListener("click", function () {
 // Hold button functionality
 btnHold.addEventListener("click", function () {
   if (playing) {
+    // hold sound play
+    holdSound.play();
     //1. Add current score to active player's score
     scores[activePlayer] += currentScore;
     // console.log(scores[activePlayer]);
@@ -96,11 +150,15 @@ btnHold.addEventListener("click", function () {
       scores[activePlayer];
 
     //2. Check if player's score is >=500
-    if (scores[activePlayer] >= 500) {
+    if (scores[activePlayer] >= 10) {
       // Finish the Game
       playing = false;
 
       showModal();
+      holdSound.volume = 0;
+
+      victorySound.play();
+      gameSound.volume = 0;
 
       btnCloseModal.addEventListener("click", closeModal);
 
@@ -116,6 +174,8 @@ btnHold.addEventListener("click", function () {
         .querySelector(`.player--${activePlayer}`)
         .classList.remove("player--active");
     } else {
+      holdSound.volume = 0.3;
+
       // Switch to the next player
       switchPlayer();
     }

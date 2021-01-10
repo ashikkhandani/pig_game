@@ -146,7 +146,7 @@ main {
 }
 
 .btn--target {
-  top: 48rem;
+  top: 52rem;
 }
 .btn:active {
   transform: translate(-50%, 3px);
@@ -189,7 +189,7 @@ main {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 50%;
-
+  color: #fff;
   background-color: #c7365f;
   padding: 6rem;
   border-radius: 8px;
@@ -211,7 +211,7 @@ main {
   top: 1.2rem;
   right: 2rem;
   font-size: 5rem;
-  color: #333;
+  color: #fff;
   cursor: pointer;
   border: none;
   background: none;
