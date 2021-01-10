@@ -1,6 +1,6 @@
 "use strict";
 window.onload = () => {
-  let rotateMsg = alert("Please rotate your mobile device to play the Game.");
+  let rotateMsg = alert("Please Rotate 🔃 your Mobile device and Click OK.");
 
   // Selecting Elements
   const player0El = document.querySelector(".player--0");
@@ -102,6 +102,7 @@ window.onload = () => {
     activePlayer = activePlayer === 0 ? 1 : 0;
     player0El.classList.toggle("player--active");
     player1El.classList.toggle("player--active");
+    holdSound.play();
   };
 
   // Rolling Dice functionality
