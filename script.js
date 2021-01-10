@@ -154,8 +154,8 @@ window.onload = () => {
         // Finish the Game
         playing = false;
 
-        victorySound.play();
         showModal();
+        victorySound.volume = 0.2;
 
         holdSound.volume = 0;
 
