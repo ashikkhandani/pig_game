@@ -64,7 +64,7 @@ window.onload = () => {
   const showModal = function () {
     modal.classList.remove("hidden1");
     overlay.classList.remove("hidden1");
-    victorySound.play();
+    // victorySound.play();
     victorySound.volume = 0.2;
   };
 
@@ -158,7 +158,7 @@ window.onload = () => {
         showModal();
         holdSound.volume = 0;
 
-        victorySound.play();
+        // victorySound.play();
         gameSound.volume = 0;
 
         btnCloseModal.addEventListener("click", closeModal);
