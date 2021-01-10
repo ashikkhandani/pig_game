@@ -48,7 +48,6 @@ window.onload = () => {
   gameSound.volume = 0.05;
   gameSound.loop = true;
   container.append(gameSound);
-  gameSound.play();
 
   // create victory sound
   let victorySound = document.createElement("audio");
@@ -64,7 +63,7 @@ window.onload = () => {
   const showModal = function () {
     modal.classList.remove("hidden1");
     overlay.classList.remove("hidden1");
-    // victorySound.play();
+    victorySound.play();
     victorySound.volume = 0.2;
   };
 
