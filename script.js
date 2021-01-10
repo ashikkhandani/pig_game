@@ -93,6 +93,7 @@ window.onload = () => {
     player0El.classList.add("player--active");
     player1El.classList.remove("player--active");
     gameSound.volume = 0.2;
+    victorySound.volume = 0;
   };
   init();
 
