@@ -188,7 +188,8 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50%;
+  width: 80%;
+  height: 300px;
   color: #fff;
   background-color: #c7365f;
   padding: 6rem;
@@ -219,10 +220,14 @@ main {
 .modal h1 {
   font-size: 4rem;
   letter-spacing: 3px;
+  text-align: center;
+  margin: 10px;
 }
 .modal p {
   font-size: 3rem;
   font-weight: 400;
+  text-align: center;
+  margin: 10px;
 }
 
 /* Media Query */

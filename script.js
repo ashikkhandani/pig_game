@@ -155,7 +155,7 @@ window.onload = () => {
         scores[activePlayer];
 
       //2. Check if player's score is >=500
-      if (scores[activePlayer] >= 10) {
+      if (scores[activePlayer] >= 500) {
         // Finish the Game
         playing = false;
 
