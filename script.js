@@ -1,7 +1,7 @@
 "use strict";
 window.onload = () => {
   let rotateMsg = alert("Please Rotate 🔃 your Mobile device and Click OK.");
-
+  rotateMsg;
   // Selecting Elements
   const player0El = document.querySelector(".player--0");
   const player1El = document.querySelector(".player--1");
@@ -63,7 +63,8 @@ window.onload = () => {
   const showModal = function () {
     modal.classList.remove("hidden1");
     overlay.classList.remove("hidden1");
-    victorySound.volume = 0.2;
+    // victorySound.volume = 0.2;
+    victorySound.play();
   };
 
   const closeModal = function () {
@@ -75,6 +76,10 @@ window.onload = () => {
 
   // Starting Condition
   const init = function () {
+    gameSound.volume = 0.05;
+    diceSound.volume = 0.2;
+    holdSound.volume = 0.1;
+
     scores = [0, 0];
     currentScore = 0;
     activePlayer = 0;
@@ -90,8 +95,7 @@ window.onload = () => {
     player1El.classList.remove("player--winner");
     player0El.classList.add("player--active");
     player1El.classList.remove("player--active");
-    gameSound.volume = 0.2;
-    victorySound.volume = 0;
+    // victorySound.volume = 0;
   };
   init();
 
@@ -101,16 +105,16 @@ window.onload = () => {
     activePlayer = activePlayer === 0 ? 1 : 0;
     player0El.classList.toggle("player--active");
     player1El.classList.toggle("player--active");
-    holdSound.play();
+    // holdSound.play();
   };
 
   // Rolling Dice functionality
   btnRoll.addEventListener("click", function () {
     if (playing) {
-      // game sound play
+      // game sound
       gameSound.play();
 
-      // dice sound play
+      // dice sound
       diceSound.play();
 
       //1. Generating a random dice roll
@@ -129,10 +133,11 @@ window.onload = () => {
           `current--${activePlayer}`
         ).textContent = currentScore;
       } else {
-        holdSound.volume = 0.3;
-
         // switch to next player
         switchPlayer();
+
+        //Hold sound
+        holdSound.play();
       }
     }
   });
@@ -155,12 +160,11 @@ window.onload = () => {
         playing = false;
 
         showModal();
+        // set all sounds
         victorySound.volume = 0.2;
-
         holdSound.volume = 0;
-
-        // victorySound.play();
         gameSound.volume = 0;
+        diceSound.volume = 0;
 
         btnCloseModal.addEventListener("click", closeModal);
 
@@ -176,7 +180,8 @@ window.onload = () => {
           .querySelector(`.player--${activePlayer}`)
           .classList.remove("player--active");
       } else {
-        holdSound.volume = 0.3;
+        // hold Sound
+        holdSound.play();
 
         // Switch to the next player
         switchPlayer();
